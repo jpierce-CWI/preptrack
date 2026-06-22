@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useParams, useRouter, notFound } from 'next/navigation'
+import { useParams, notFound } from 'next/navigation'
 import Link from 'next/link'
 import { useJobs } from '@/lib/JobContext'
 import { useEquipment } from '@/lib/EquipmentContext'
@@ -13,7 +13,6 @@ import ChallengeList from '@/components/ui/ChallengeList'
 export default function JobDetailPage() {
     
 const { jobNumber } = useParams()
-const router = useRouter()
 const { jobs, updateJobStatus, patchJob, deleteJob } = useJobs()
 const { getEquipment, initJob } = useEquipment()
 
@@ -42,7 +41,7 @@ if (!job) return notFound()
 
   async function handleDeleteJob() {
     await deleteJob(jobNumber)
-    router.push('/')
+    window.location.assign('/')
   }
 
 

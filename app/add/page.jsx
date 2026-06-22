@@ -10,6 +10,7 @@ const VENUE_OPTIONS = [
   '8p Limitless VR',
   '12p Limitless VR',
   'D&B Ranger Station',
+  'EO Batman',
 ]
 
 import { CHALLENGES } from '@/lib/challenges'
