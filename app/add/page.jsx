@@ -38,19 +38,30 @@ export default function AddPage() {
   const isLVR = form.venue.endsWith('Limitless VR')
 
   function handleField(e) {
+    if (e.target.name === 'courseCount' && parseInt(e.target.value) > 3) {
+      setForm({ ...form, [e.target.name]: '3' })
+      return
+    }
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
   function handleCourseCount(e) {
-    const count = parseInt(e.target.value) || 0
-    setCourseCount(e.target.value)
+    let count = parseInt(e.target.value) || 0
+    count > 3 ? (count = 3, setCourseCount('3')) : setCourseCount(e.target.value)
+
+    console.log('count:', count, 'courseCount:', courseCount)
+
     const holes = parseInt(challengeCount) || 0
     setCoursesChallenges(Array.from({ length: count }, () => Array(holes).fill('')))
   }
 
+
+
   function handleChallengeCount(e) {
-    const count = parseInt(e.target.value) || 0
-    setChallengeCount(e.target.value)
+    let count = parseInt(e.target.value) || 0
+    count > 12 ? (count = 12, setChallengeCount('12')) : setChallengeCount(e.target.value)
+    
+    console.log('count:', count, 'courseCount:', courseCount)
     const courses = parseInt(courseCount) || 0
     setCoursesChallenges(Array.from({ length: courses }, () => Array(count).fill('')))
   }

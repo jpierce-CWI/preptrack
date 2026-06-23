@@ -55,6 +55,7 @@ export default function Page() {
       <div className="mb-4">
         <input
           type="text"
+          maxLength={50}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search by job # or name..."
